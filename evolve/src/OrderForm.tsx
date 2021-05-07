@@ -1,20 +1,29 @@
 import React from "react";
-import {Formik, useFormik} from "formik";
+import {Formik, FormikValues} from "formik";
 
 const OrderForm: React.FC = () => {
 
-    const formik = useFormik({
-        initialValues: {},
-        onSubmit: values => {
-          console.log("kid")
-        },
-    });
-
     return (
       <div>
-          <form onSubmit={formik.handleSubmit}>
-              <button type={"submit"}>Submit</button>
-          </form>
+            <Formik
+                initialValues={{}}
+                onSubmit={(values: FormikValues) => {
+                    console.log("kid");
+                    console.log(values)
+                }}
+
+            >
+                {
+                    props => (
+                        <form onSubmit={props.handleSubmit}>
+                            <input
+                                type={"text"}
+                            />
+                            <button type={"submit"}/>
+                        </form>
+                    )
+                }
+            </Formik>
       </div>
     );
 }

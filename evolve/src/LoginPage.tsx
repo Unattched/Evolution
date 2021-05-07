@@ -9,7 +9,9 @@ const LoginPage: React.FC = () => {
 
         <div className={"LoginPage"}>
             <header>
-                <div id={"Order"}>Order now</div>
+                <div id={"Order"} onClick={() => {
+                    history.push("/orderForm");
+                }}>Order now</div>
                 <div onClick={() => {
                     firebase.auth().signInWithPopup(googleAuth).then((res) => {
                        // @ts-ignore
